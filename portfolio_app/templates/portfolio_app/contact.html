@@ -1,0 +1,76 @@
+{% extends './base.html' %}
+{% load static %}
+{% block title %}Contact{% endblock %}
+
+{% block header %}
+<header id="header" class="fixed-top d-flex justify-content-center align-items-center">
+  <nav id="navbar" class="navbar">
+    <ul>
+      <li><a class="nav-link scrollto" href="{% url 'home' %}">Home</a></li>
+      <li class="dropdown"><a href="{% url 'portfolio' %}"><span>Portfolio</span> <i class="bi bi-chevron-down"></i></a>
+        <ul>
+          {% for category in categorys %}
+          <li><a href="{% url 'portfolio_detail' category.id %}">{{ category.name }}</a></li>
+          {% endfor %}
+        </ul>
+      </li>
+      <li><a class="nav-link scrollto active" href="{% url 'contact' %}">Contact</a></li>
+    </ul>
+    <i class="bi bi-list mobile-nav-toggle"></i>
+  </nav>
+</header>
+{% endblock %}
+
+{% block content %}
+<section class="breadcrumbs">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center">
+        <h2>Portfolio Details</h2>
+        <ol>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li>contact</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+<section id="contact" class="contact">
+    <div class="container">
+      <div class="section-title">
+        <span>Contact Me</span>
+        <h2>Contact Me</h2>
+      </div>
+      <div class="row">
+        <div class="col-lg">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="info-box">
+                <i class="bx bx-share-alt"></i>
+                <h3>Social Profiles</h3>
+                <div class="social-links">
+                  <a href="https://instagram.com/oleg_photos1?igshid=YmMyMTA2M2Y=" class="linkedin"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                  <a href="https://t.me/olegphotos1" class="linkedin"><i class="fa fa-telegram" aria-hidden="true"></i></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block footer %}
+<footer id="footer">
+    <div class="container">
+      <h3>Oleg Istomin</h3>
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="credits">
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+  </footer>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends './base.html' %}
+{% load static %}
+{% block title %}Portfolio{% endblock %}
+
+{% block header %}
+<header id="header" class="fixed-top d-flex justify-content-center align-items-center">
+  <nav id="navbar" class="navbar">
+    <ul>
+      <li><a class="nav-link scrollto" href="{% url 'home' %}">Home</a></li>
+      <li class="dropdown"><a class="nav-link scrollto active" href="#"><span>Portfolio</span> <i class="bi bi-chevron-down"></i></a>
+        <ul>
+          {% for category in categorys %}
+          <li><a href="{% url 'portfolio_detail' category.id %}">{{ category.name }}</a></li>
+          {% endfor %}
+        </ul>
+      </li>
+      <li><a class="nav-link scrollto" href="{% url 'contact' %}">Contact</a></li>
+    </ul>
+    <i class="bi bi-list mobile-nav-toggle"></i>
+  </nav>
+</header>
+{% endblock %}
+
+{% block content %}
+  <section class="breadcrumbs">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center">
+        <h2>Portfolio Details</h2>
+        <ol>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li>Portfolio</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+  <section id="portfolio" class="portfolio">
+    <div class="container">
+      <div class="section-title">
+        <span>My Portfolio</span>
+        <h2>My Portfolio</h2>
+      </div>
+      <div class="row portfolio-container">
+        {% for category in categorys %}
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-img"><a href="{% url 'portfolio_detail' category.id %}"><img src="{{ category.category_image.url }}" class="img-fluid" alt=""></a></div>
+            <div class="portfolio-info">
+              <h4>{{ category.name }}</h4>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block footer %}
+  {% include './block/footer.html' %}
+{% endblock %}
